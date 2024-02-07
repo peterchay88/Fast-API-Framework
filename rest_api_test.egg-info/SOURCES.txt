@@ -3,6 +3,11 @@ Framework/__init__.py
 Framework/src/__init__.py
 Framework/src/utilities/__init__.py
 Framework/src/utilities/request_utility.py
+framework/__init__.py
+framework/Tests/__init__.py
+framework/src/__init__.py
+framework/src/utilities/__init__.py
+framework/src/utilities/request_utility.py
 rest_api_test.egg-info/PKG-INFO
 rest_api_test.egg-info/SOURCES.txt
 rest_api_test.egg-info/dependency_links.txt
