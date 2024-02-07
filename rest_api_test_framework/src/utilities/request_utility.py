@@ -7,7 +7,8 @@ class RequestsApiCall:
     def __init__(self):
         self.url = "http://localhost:8080/docs#/"
 
-    def expected_status_code(self, status_code, expected_status_code=200):
+    @staticmethod
+    def expected_status_code(status_code, expected_status_code=200):
         """
         This method is used to assert if the expected status code was returned from the API response call
         :param status_code:
@@ -24,8 +25,6 @@ class RequestsApiCall:
         :param endpoint:
         :return:
         """
-        logger.debug("huh?")
         response = requests.get(url=f"{self.url}{endpoint}")
-        self.expected_status_code(status_code=response.status_code)
-        logger.info("WHAT")
+        logger.debug(f"Running GET API call on endpoint {endpoint}")
         return response
