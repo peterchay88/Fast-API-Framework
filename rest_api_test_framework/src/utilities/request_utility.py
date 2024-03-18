@@ -5,14 +5,14 @@ import logging as logger
 class RequestsApiCall:
 
     def __init__(self):
-        self.url = "http://localhost:8080/docs#/"
+        self.url = "http://localhost:8080/"
 
     @staticmethod
     def expected_status_code(status_code, expected_status_code=200):
         """
         This method is used to assert if the expected status code was returned from the API response call
-        :param status_code:
-        :param expected_status_code:
+        :param status_code: Status code passed in
+        :param expected_status_code: Expected status code
         :return:
         """
         logger.debug(f"Checking to see if expected status code {expected_status_code} satisfied")
@@ -22,9 +22,23 @@ class RequestsApiCall:
     def get(self, endpoint):
         """
         API wrapper for the GET response call
-        :param endpoint:
+        :param endpoint: API endpoint to be hit
         :return:
         """
-        response = requests.get(url=f"{self.url}{endpoint}")
         logger.debug(f"Running GET API call on endpoint {endpoint}")
+        response = requests.get(url=f"{self.url}{endpoint}")
+        return response
+
+    def post(self, endpoint, api_data=None, api_headers=None):
+        """
+        API wrapper for the POST response call
+        :param api_headers: Headers to be passed to the Post call. Default is None if there are no arguments.
+        :param api_data: data to be passed to the Post call. Default is None if there are no arguments.
+        :param endpoint: API endpoint to be hit
+        :return:
+        """
+        logger.debug(f"Running POST API call on endpoint {endpoint}")
+        logger.debug(f"Passing the following params for data {api_data}")
+        logger.debug(f"Passing the following params for headers {api_headers}")
+        response = requests.post(url=f"{self.url}{endpoint}", data=api_data, headers=api_headers)
         return response
