@@ -19,14 +19,16 @@ class RequestsApiCall:
         assert status_code == expected_status_code, \
             f"Unexpected status code. Expected {expected_status_code}. Actual {status_code}."
 
-    def get(self, endpoint):
+    def get(self, endpoint, api_headers=None):
         """
         API wrapper for the GET response call
+        :param api_headers: Headers to be passed to the Get call. Default is None if there are no arguments.
         :param endpoint: API endpoint to be hit
         :return:
         """
         logger.debug(f"Running GET API call on endpoint {endpoint}")
-        response = requests.get(url=f"{self.url}{endpoint}")
+        logger.debug(f"Passing the following params for headers {api_headers}")
+        response = requests.get(url=f"{self.url}{endpoint}", headers=api_headers)
         return response
 
     def post(self, endpoint, api_data=None, api_headers=None):
