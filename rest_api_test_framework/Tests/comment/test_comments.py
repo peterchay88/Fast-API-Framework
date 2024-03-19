@@ -1,10 +1,11 @@
 import pytest
 import logging as logger
 from rest_api_test_framework.src.utilities.request_utility import RequestsApiCall
-from rest_api_test_framework.src.utilities.build_request_headers_utility import build_request_headers
+from rest_api_test_framework.src.utilities.comments_utility import Comments
 
 pytestmark = [pytest.mark.comments]
 api_request_call = RequestsApiCall()
+comments = Comments()
 
 
 class TestCommentsEndpoint:
@@ -15,6 +16,7 @@ class TestCommentsEndpoint:
         This test checks to see if we can successfully run a get call on the comments endpoint
         :return:
         """
-        token_header = build_request_headers(access_token=get_auth_token)
-        api_response = api_request_call.get(endpoint="comments/", api_headers=token_header)
-        api_request_call.expected_status_code(status_code=api_response.status_code)
+        response = comments.get_all_comments(access_token=get_auth_token)
+        assert response.ok, \
+            f"Error! Unexpected status code returned. Expected OK status. Actual {response.status_code}"
+

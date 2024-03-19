@@ -6,6 +6,7 @@ class RequestsApiCall:
 
     def __init__(self):
         self.url = "http://localhost:8080/"
+        self.session = requests.session()
 
     @staticmethod
     def expected_status_code(status_code, expected_status_code=200):
@@ -28,7 +29,7 @@ class RequestsApiCall:
         """
         logger.debug(f"Running GET API call on endpoint {endpoint}")
         logger.debug(f"Passing the following params for headers {api_headers}")
-        response = requests.get(url=f"{self.url}{endpoint}", headers=api_headers)
+        response = self.session.get(url=f"{self.url}{endpoint}", headers=api_headers)
         return response
 
     def post(self, endpoint, api_data=None, api_headers=None):
@@ -42,5 +43,5 @@ class RequestsApiCall:
         logger.debug(f"Running POST API call on endpoint {endpoint}")
         logger.debug(f"Passing the following params for data {api_data}")
         logger.debug(f"Passing the following params for headers {api_headers}")
-        response = requests.post(url=f"{self.url}{endpoint}", data=api_data, headers=api_headers)
+        response = self.session.post(url=f"{self.url}{endpoint}", data=api_data, headers=api_headers)
         return response
