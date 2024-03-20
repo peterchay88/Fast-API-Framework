@@ -18,6 +18,8 @@ class TestCommentsEndpoint:
         """
         logger.info("Running tcid02 'test_get_comments'")
         response = comments.get_all_comments(access_token=get_auth_token)
+        logger.debug(f"Returned comments {response.json()}")
+        logger.debug(f"Returned comments count: {len(response.json())}")
         assert response.ok, \
             f"Error! Unexpected status code returned. Expected OK status. Actual {response.status_code}"
 
