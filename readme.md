@@ -22,5 +22,8 @@ User admin/admin is preloaded in the DB. Leverage this user to authenticate and 
 Tests should be run using the test runner shell script followed by the test tag after as an argument. \
 For example `bash test_runner.sh tcid01` will run the test with the tag tcid01. 
 
+If you need to run tests with more than one marker use the "and/or" operator
+For example `bash test_runner.sh "tcid01 and tcid34"`
+
 `Note this framework is still underconstruction. Will update readme file as I get further in the 
 framework :)`
