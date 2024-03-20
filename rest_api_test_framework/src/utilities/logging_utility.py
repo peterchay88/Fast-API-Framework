@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 logger = logging.getLogger()
-load_dotenv("../../secrets.env")
+load_dotenv("/Users/peter/Desktop/python/udemy/Rest_API_Project/secrets.env")
 
 
 class HideSensitiveData(logging.Filter):
