@@ -25,5 +25,8 @@ For example `bash test_runner.sh tcid01` will run the test with the tag tcid01.
 If you need to run tests with more than one marker use the "and/or" operator
 For example `bash test_runner.sh "tcid01 and tcid34"`
 
-`Note this framework is still underconstruction. Will update readme file as I get further in the 
-framework :)`
+### Important information for troubleshooting issues
+Line 10 in `rest_api_test_framework/Tests/conftest.py` load dotenv is set to use an absolute path \
+please make sure to update it with your machines specific absolute path
+
+ ###### Note this framework is still underconstruction. Will update readme file as I get further in the framework :)
