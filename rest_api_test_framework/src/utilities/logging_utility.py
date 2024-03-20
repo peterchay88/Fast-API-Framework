@@ -2,7 +2,7 @@ import logging
 import os
 from dotenv import load_dotenv
 
-LOGGER = logging.getLogger()
+logger = logging.getLogger()
 load_dotenv("../../secrets.env")
 
 
@@ -13,4 +13,4 @@ class HideSensitiveData(logging.Filter):
         return True
 
 
-LOGGER.addFilter(HideSensitiveData())
+logger.addFilter(HideSensitiveData())

@@ -1,5 +1,5 @@
 import pytest
-import logging as logger
+from rest_api_test_framework.src.utilities.logging_utility import logger
 from rest_api_test_framework.src.utilities.request_utility import RequestsApiCall
 
 

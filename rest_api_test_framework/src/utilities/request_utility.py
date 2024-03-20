@@ -1,5 +1,5 @@
 import requests
-import logging as logger
+from rest_api_test_framework.src.utilities.logging_utility import logger
 
 
 class RequestsApiCall:
