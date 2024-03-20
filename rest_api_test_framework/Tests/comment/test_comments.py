@@ -16,6 +16,7 @@ class TestCommentsEndpoint:
         This test checks to see if we can successfully run a get call on the comments endpoint
         :return:
         """
+        logger.info("Running tcid02 'test_get_comments'")
         response = comments.get_all_comments(access_token=get_auth_token)
         assert response.ok, \
             f"Error! Unexpected status code returned. Expected OK status. Actual {response.status_code}"
