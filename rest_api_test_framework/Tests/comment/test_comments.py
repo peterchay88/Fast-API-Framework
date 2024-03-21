@@ -50,9 +50,8 @@ class TestCommentsEndpoint:
         logger.debug(f"Now updating the comment with ID : {comment_id}")
         likes = generate_random_number()
         new_random_string = generate_random_sentence()
-        payload = {"comment_text": new_random_string, "likes": likes}
-        logger.debug(f"updating the comment with ID : {comment_id} with the following payload: {payload}")
-        response = comments.update_comment(access_token=get_auth_token, comment_id=comment_id, comment_payload=payload)
+        response = comments.update_comment(access_token=get_auth_token, comment_id=comment_id,
+                                           comment_text=new_random_string, likes=likes)
         assert response.json()['comment_text'] == new_random_string, \
             (f"Error! Unexpected string for comment. Expected {new_random_string}. "
              f"Actual {response.json()['comment_text']}")

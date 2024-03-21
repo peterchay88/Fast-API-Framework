@@ -26,10 +26,19 @@ class Comments:
         self.api_request.expected_status_code(status_code=response.status_code, expected_status_code=201)
         return response
 
-    def update_comment(self, access_token, comment_id, comment_payload):
+    def update_comment(self, access_token, comment_id, **kwargs):
         request_headers = build_request_headers(access_token, content_type="application/json")
         logger.debug(f"Sending the following headers: {request_headers}")
-        json_data = json.dumps(comment_payload)
+
+        # Using Kwargs for payload so that this method is scalable in case of future changes
+        payload = {}
+        if "comment_text" in kwargs:
+            payload["comment_text"] = kwargs["comment_text"]
+        if "likes" in kwargs:
+            payload["likes"] = kwargs["likes"]
+
+        json_data = json.dumps(payload)
+        logger.debug(f"updating the comment with ID : {comment_id} with the following payload: {payload}")
         response = self.api_request.put(endpoint=f"{self.endpoint}/{comment_id}", api_data=json_data,
                                         api_headers=request_headers)
         self.api_request.expected_status_code(status_code=response.status_code)
