@@ -34,3 +34,10 @@ class Comments:
                                         api_headers=request_headers)
         self.api_request.expected_status_code(status_code=response.status_code)
         return response
+
+    def delete_comment(self, access_token, comment_id):
+        requests_headers = build_request_headers(access_token)
+        logger.debug(f"Sending the following headers: {requests_headers}")
+        response = self.api_request.delete(endpoint=f"{self.endpoint}/{comment_id}")
+        self.api_request.expected_status_code(status_code=response.status_code)
+        return response
