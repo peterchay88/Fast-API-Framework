@@ -12,3 +12,8 @@ class Comments:
         request_headers = build_request_headers(access_token)
         response = self.api_request.get(endpoint=self.endpoint, api_headers=request_headers)
         return response
+
+    def create_comment(self, access_token):
+        request_headers = build_request_headers(access_token)
+        response = self.api_request.post(endpoint=self.endpoint, api_headers=request_headers)
+        return response
