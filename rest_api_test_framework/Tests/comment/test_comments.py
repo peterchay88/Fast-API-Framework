@@ -61,5 +61,10 @@ class TestCommentsEndpoint:
 
         # step 3: delete comment
         logger.info("Running tcid03: Deleting comment.")
+        response = comments.delete_comment(access_token=get_auth_token, comment_id=comment_id)
+        assert response.json()["detail"] == f"Deleted comment {comment_id}", \
+            (f"Error! Unexpected value returned. Expected Deleted comment {comment_id}. "
+             f"Actual {response.json()['detail']}.")
+
 
 
