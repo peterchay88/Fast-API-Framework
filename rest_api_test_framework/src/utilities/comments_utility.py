@@ -27,7 +27,7 @@ class Comments:
         return response
 
     def update_comment(self, access_token, comment_id, comment_payload):
-        request_headers = build_request_headers(access_token, additonal_content_header=True)
+        request_headers = build_request_headers(access_token, content_type="application/json")
         logger.debug(f"Sending the following headers: {request_headers}")
         json_data = json.dumps(comment_payload)
         response = self.api_request.put(endpoint=f"{self.endpoint}/{comment_id}", api_data=json_data,
