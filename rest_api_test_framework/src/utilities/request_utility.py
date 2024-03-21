@@ -27,7 +27,7 @@ class RequestsApiCall:
         :param endpoint: API endpoint to be hit
         :return:
         """
-        logger.debug(f"Running GET API call on endpoint {endpoint}")
+        logger.debug(f"Running GET API call on url {self.url}{endpoint}")
         logger.debug(f"Passing the following params for headers {api_headers}")
         response = self.session.get(url=f"{self.url}{endpoint}", headers=api_headers)
         return response
@@ -40,7 +40,7 @@ class RequestsApiCall:
         :param endpoint: API endpoint to be hit
         :return:
         """
-        logger.debug(f"Running POST API call on endpoint {endpoint}")
+        logger.debug(f"Running POST API call on url {self.url}{endpoint}")
         logger.debug(f"Passing the following params for data {api_data}")
         logger.debug(f"Passing the following params for headers {api_headers}")
         response = self.session.post(url=f"{self.url}{endpoint}", data=api_data, headers=api_headers)
@@ -54,8 +54,22 @@ class RequestsApiCall:
         :param api_headers: Headers to be passed to the Put call. Default is None if there are no arguments.
         :return:
         """
-        logger.debug(f"Running PUT API call on endpoint {endpoint}")
+        logger.debug(f"Running PUT API call on url {self.url}{endpoint}")
         logger.debug(f"Passing the following params for data {api_data}")
         logger.debug(f"Passing the following params for headers {api_headers}")
         response = self.session.put(url=f"{self.url}{endpoint}", data=api_data, headers=api_headers)
+        return response
+
+    def delete(self, endpoint, api_data=None, api_headers=None):
+        """
+        API wrapper for the DELETE response call
+        :param endpoint: API endpoint to be hit
+        :param api_data: data to be passed to the delete call. Default is None if there are no arguments.
+        :param api_headers: Headers to be passed to the delete call. Default is None if there are no arguments.
+        :return:
+        """
+        logger.debug(f"Running DELETE API call on url {self.url}{endpoint}")
+        logger.debug(f"Passing the following params for data {api_data}")
+        logger.debug(f"Passing the following params for headers {api_headers}")
+        response = self.session.delete(url=f"{self.url}{endpoint}", data=api_data, headers=api_headers)
         return response
