@@ -2,6 +2,7 @@ import pytest
 from rest_api_test_framework.src.utilities.logging_utility import logger
 from rest_api_test_framework.src.utilities.request_utility import RequestsApiCall
 from rest_api_test_framework.src.utilities.comments_utility import Comments
+from rest_api_test_framework.src.helpers.random_sentence_generator import generate_random_sentence
 
 pytestmark = [pytest.mark.comments]
 api_request_call = RequestsApiCall()
@@ -31,7 +32,11 @@ class TestCommentsEndpoint:
         :return:
         """
         logger.info("Running tcid03 'test_cud_comment'")
-        # create comment
+        # step 1: create comment w/ a random comment
+        random_string = generate_random_sentence()
+        logger.debug(f"Creating new comment with string: {random_string}")
+        response = comments.create_comment(access_token=get_auth_token, string=random_string)
+        assert response.ok, f"Error! Unexpected status code returned. {response.status_code}"
         # update comment
         # post comment
 
