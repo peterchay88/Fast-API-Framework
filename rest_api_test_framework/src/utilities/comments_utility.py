@@ -37,9 +37,8 @@ class Comments:
         if "likes" in kwargs:
             payload["likes"] = kwargs["likes"]
 
-        json_data = json.dumps(payload)
         logger.debug(f"updating the comment with ID : {comment_id} with the following payload: {payload}")
-        response = self.api_request.put(endpoint=f"{self.endpoint}/{comment_id}", api_data=json_data,
+        response = self.api_request.put(endpoint=f"{self.endpoint}/{comment_id}", api_json=payload,
                                         api_headers=request_headers)
         self.api_request.expected_status_code(status_code=response.status_code)
         return response

@@ -46,18 +46,20 @@ class RequestsApiCall:
         response = self.session.post(url=f"{self.url}{endpoint}", data=api_data, headers=api_headers)
         return response
 
-    def put(self, endpoint, api_data=None, api_headers=None):
+    def put(self, endpoint, api_data=None, api_headers=None, api_json=None):
         """
         API wrapper for the PUT response call
         :param endpoint: API endpoint to be hit
         :param api_data: data to be passed to the Put call. Default is None if there are no arguments.
         :param api_headers: Headers to be passed to the Put call. Default is None if there are no arguments.
+        :param api_json: JSON to be passed if the intended request calls for it
         :return:
         """
         logger.debug(f"Running PUT API call on url {self.url}{endpoint}")
         logger.debug(f"Passing the following params for data {api_data}")
         logger.debug(f"Passing the following params for headers {api_headers}")
-        response = self.session.put(url=f"{self.url}{endpoint}", data=api_data, headers=api_headers)
+        response = self.session.put(url=f"{self.url}{endpoint}", data=api_data, headers=api_headers,
+                                    json=api_json)
         return response
 
     def delete(self, endpoint, api_data=None, api_headers=None):
