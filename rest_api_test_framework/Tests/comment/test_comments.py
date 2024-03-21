@@ -23,3 +23,16 @@ class TestCommentsEndpoint:
         assert response.ok, \
             f"Error! Unexpected status code returned. Expected OK status. Actual {response.status_code}"
 
+    @pytest.mark.tcid03
+    def test_cud_comment(self, get_auth_token):
+        """
+        This test checks the ability to create a new comment, update it, and delete it
+        :param get_auth_token:
+        :return:
+        """
+        logger.info("Running tcid03 'test_cud_comment'")
+        # create comment
+        # update comment
+        # post comment
+
+
