@@ -1,4 +1,4 @@
-**/API/
+/API/
 /build/
 /dist/
 rest_api_test_framework.egg-info/
@@ -11,4 +11,5 @@ secrets.env
 *.html
 **/.pytest_cache/
 *.log
-
+/API/basic-restapi-app/db.sqlite3-shm
+/API/basic-restapi-app/db.sqlite3-wal
