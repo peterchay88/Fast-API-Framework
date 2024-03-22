@@ -10,3 +10,4 @@ secrets.env
 .DS_store
 *.html
 **/.pytest_cache/
+*.log
