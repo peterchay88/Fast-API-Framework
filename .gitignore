@@ -11,3 +11,5 @@ secrets.env
 *.html
 **/.pytest_cache/
 *.log
+*.db.sqlite3-shm
+*.db.sqlite3-wal
