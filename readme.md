@@ -28,10 +28,6 @@ For example `bash test_runner.sh "tcid01 and tcid34"`
 ```commandline
 Need to update this information with Docker once the it clears up how I want to run this with docker
 ```
-
-### Important information for troubleshooting issues
-Line 10 in `rest_api_test_framework/Tests/conftest.py` load dotenv is set to use an absolute path \
-please make sure to update it with your machines specific absolute path
 ----
  ### TO DO
 1. Need to create a shell script that streamlines the docker steps. Currently manually issuing the commands is tedious.
