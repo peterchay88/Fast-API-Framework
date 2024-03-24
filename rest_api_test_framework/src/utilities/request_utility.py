@@ -1,9 +1,6 @@
 import requests
 from rest_api_test_framework.src.utilities.logging_utility import logger
 import os
-from dotenv import load_dotenv
-
-load_dotenv("../../../secrets.env")
 
 
 class RequestsApiCall:
