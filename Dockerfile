@@ -9,6 +9,7 @@ RUN mkdir /rest_api_test_framework
 COPY ./rest_api_test_framework /rest_api_test_framework
 COPY setup.py /rest_api_test_framework
 COPY requirements.txt /rest_api_test_framework
+COPY pytest.ini /rest_api_test_framework
 
 # Change the working directory in the docker container to automation
 WORKDIR /rest_api_test_framework
