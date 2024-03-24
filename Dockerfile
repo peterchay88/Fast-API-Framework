@@ -17,3 +17,4 @@ WORKDIR /rest_api_test_framework
 # Install the setup.py file and the requirements file
 RUN python3 setup.py install
 RUN pip3 install -r requirements.txt
+

@@ -8,6 +8,8 @@ services:
     container_name: fast_api
     volumes:
       - ./rest_api_test_framework:/automation
+    env_file:
+      - secrets.env
     stdin_open: true
     tty: true
     command: /bin/bash
