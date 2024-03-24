@@ -25,8 +25,16 @@ For example `bash test_runner.sh tcid01` will run the test with the tag tcid01.
 If you need to run tests with more than one marker use the "and/or" operator
 For example `bash test_runner.sh "tcid01 and tcid34"`
 
+```commandline
+Need to update this information with Docker once the it clears up how I want to run this with docker
+```
+
 ### Important information for troubleshooting issues
 Line 10 in `rest_api_test_framework/Tests/conftest.py` load dotenv is set to use an absolute path \
 please make sure to update it with your machines specific absolute path
-
- ###### Note this framework is still underconstruction. Will update readme file as I get further in the framework :)
+----
+ ### TO DO
+1. Need to create a shell script that streamlines the docker steps. Currently manually issuing the commands is tedious.
+2. Create a runner script that easily executes tests from your local machine to the docker instance. That way
+   a user doesn't have to log into the docker container to run tests
+3. See if there is an easy way to access reports that are generated from the tests in the docker container
