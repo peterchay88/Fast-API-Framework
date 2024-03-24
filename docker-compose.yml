@@ -1,12 +1,14 @@
 services:
   # Defining what image to build the container from
-  rest-api-server:
+  fast-api:
     image: rest_api:v4
     ports:
       - "8000:8000"
     restart: "unless-stopped"
+    container_name: fast_api
     volumes:
       - ./rest_api_test_framework:/automation
     stdin_open: true
     tty: true
     command: /bin/bash
+

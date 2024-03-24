@@ -5,11 +5,13 @@ LABEL authors="peter"
 RUN apt-get update && apt-get install -y nano
 
 # Making a folder named automation to copy all the files into
-RUN mkdir /automation
-COPY ./rest_api_test_framework /automation
+RUN mkdir /rest_api_test_framework
+COPY ./rest_api_test_framework /rest_api_test_framework
+COPY setup.py /rest_api_test_framework
+COPY requirements.txt /rest_api_test_framework
 
 # Change the working directory in the docker container to automation
-WORKDIR /automation
+WORKDIR /rest_api_test_framework
 
 # Install the setup.py file and the requirements file
 RUN python3 setup.py install
