@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y nano
 
 # Making a folder named automation to copy all the files into
 RUN mkdir /automation
-COPY . /automation
+COPY ./rest_api_test_framework /automation
 
 # Change the working directory in the docker container to automation
 WORKDIR /automation
