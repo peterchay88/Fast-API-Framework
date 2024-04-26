@@ -40,10 +40,6 @@ After making this change please run tests using the local test runner in the `te
 ```commandline
 bash local_test_runner.sh <argument>
 ```
-
-```commandline
-Need to update this information with Docker once the it clears up how I want to run this with docker
-```
 ----
  ### TO DO
 1. Write more test.
