@@ -1,13 +1,9 @@
 import os
 import pytest
 from rest_api_test_framework.src.utilities.request_utility import RequestsApiCall
-from dotenv import load_dotenv
 from rest_api_test_framework.src.utilities.logging_utility import logger
 
 api_request = RequestsApiCall()
-
-# Must use absolute path for env variables to work when calling from fixture
-load_dotenv("/Users/peter/Desktop/python/udemy/Rest_API_Project/secrets.env")
 admin_username = os.getenv("ADMIN_USERNAME")
 admin_password = os.getenv("ADMIN_PASSWORD")
 

@@ -2,7 +2,6 @@ import pytest
 from rest_api_test_framework.src.utilities.logging_utility import logger
 from rest_api_test_framework.src.utilities.request_utility import RequestsApiCall
 
-
 pytestmark = [pytest.mark.health]
 api_request_call = RequestsApiCall()
 

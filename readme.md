@@ -9,7 +9,7 @@ Docker \
 Python \
 Make
 
-### How to Spin up the API server
+## How to Spin up the API server
 1. Launch Docker Desktop
 2. Navigate to the folder `/Rest_API_Project/API/basic-restapi-app` in terminal
 3. Run the command `make run`
@@ -18,15 +18,30 @@ Make
 User admin/admin is preloaded in the DB. Leverage this user to authenticate and perform admin-only operations 
 (i.e. create/delete/list-all users, delete comments)
 
-### How to run tests
-Tests should be run using the test runner shell script followed by the test tag after as an argument. \
-For example `bash test_runner.sh tcid01` will run the test with the tag tcid01. 
-
+## How to run tests
+### Docker
+First you will need to spin up the docker image. 
+```commandline
+bash start_docker.sh
+```
+Next open another terminal and navigate to the `test_runners` folder. From there run the docker test runner script with
+an argument after calling the script. Specify all if you wish to run all the tests.
+```commandline
+bash docker_test_runner.sh <argument>
+```
 If you need to run tests with more than one marker use the "and/or" operator
-For example `bash test_runner.sh "tcid01 and tcid34"`
+For example `bash docker_test_runner.sh "tcid01 and tcid34"`
 
-### Important information for troubleshooting issues
-Line 10 in `rest_api_test_framework/Tests/conftest.py` load dotenv is set to use an absolute path \
-please make sure to update it with your machines specific absolute path
+### Local
+If you wish to run tests on the local env you will need to edit the value in `secrets.env` for the key `API_URL` 
+currently it`s pointed to work for a docker env. Please change that value to local host.
 
- ###### Note this framework is still underconstruction. Will update readme file as I get further in the framework :)
+After making this change please run tests using the local test runner in the `test_runners` folder
+```commandline
+bash local_test_runner.sh <argument>
+```
+----
+ ### TO DO
+1. Write more test.
+2. re-vist if Docker YAML file is the best way to do this. After running the docker script that uses the yaml file
+its a bit annoying that you have to use another terminal.

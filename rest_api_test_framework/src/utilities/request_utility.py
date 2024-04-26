@@ -1,11 +1,12 @@
 import requests
 from rest_api_test_framework.src.utilities.logging_utility import logger
+import os
 
 
 class RequestsApiCall:
 
     def __init__(self):
-        self.url = "http://localhost:8080/"
+        self.url = os.getenv("API_URL")
         self.session = requests.session()
 
     @staticmethod
