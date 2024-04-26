@@ -5,7 +5,7 @@ echo
 echo "-------------------------------------------------"
 echo "Creating Docker Image rest_api:v1"
 echo "-------------------------------------------------"
-docker build -t rest_api:v1 .
+docker build -t rest_api:latest .
 
 # If a container named fast_api exists. Stop it and then remove it.
 echo
