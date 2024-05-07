@@ -25,6 +25,22 @@ class TestCommentsEndpoint:
             f"Error! Unexpected status code returned. Expected OK status. Actual {response.status_code}"
 
     @pytest.mark.tcid03
+    def test_post_comments(self,get_auth_token):
+        """
+        This test confirms that we can send a post to a comments endpoints
+        :param get_auth_token:
+        :return:
+        """
+        logger.info("Running tcid03 'test_post_comments'")
+        random_string = generate_random_sentence()
+        response = comments.create_comment(access_token=get_auth_token, string=random_string)
+        logger.debug(f"Generating a comment with the text: {random_string}")
+        assert response.status_code == 201, \
+            f"Unexpected Status Code. Expected: 201. Actual:{response.status_code}"
+        assert response.json()['comment_text'] == random_string, \
+            f"Unexpected Value. Expected: {random_string}. Actual:{response.json()['comment_text']}"
+
+    @pytest.mark.tcid00
     def test_cud_comment(self, get_auth_token):
         """
         This test checks the ability to create a new comment, update it, and delete it
