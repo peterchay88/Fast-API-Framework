@@ -1,4 +1,4 @@
-# REST API Project 
+# FAST API Project 
 
 This project is a test framework that tests the endpoints created from
 the API created by Jose Lopez. The source code and instructions for the REST API can be found
@@ -45,3 +45,4 @@ bash local_test_runner.sh <argument>
 1. Write more test.
 2. re-vist if Docker YAML file is the best way to do this. After running the docker script that uses the yaml file
 its a bit annoying that you have to use another terminal.
+3. Need to add info on how I used secrets.env in the docker file 
