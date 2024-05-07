@@ -1,3 +1,4 @@
+import random
 from rest_api_test_framework.src.utilities.request_utility import RequestsApiCall
 from rest_api_test_framework.src.utilities.build_request_headers_utility import build_request_headers
 from rest_api_test_framework.src.helpers.url_encoding import url_encode_string
@@ -17,6 +18,12 @@ class Comments:
         response = self.api_request.get(endpoint=self.endpoint, api_headers=request_headers)
         self.api_request.expected_status_code(status_code=response.status_code)
         return response
+
+    def get_random_comment_id(self, access_token):
+        list_of_comments = self.get_all_comments(access_token=access_token).json()
+        id_list = [comments['id'] for comments in list_of_comments]
+        random_id = random.choice(id_list)
+        return random_id
 
     def create_comment(self, access_token, string):
         request_headers = build_request_headers(access_token)

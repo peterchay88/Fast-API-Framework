@@ -27,7 +27,7 @@ class TestCommentsEndpoint:
     @pytest.mark.tcid03
     def test_post_comments(self,get_auth_token):
         """
-        This test confirms that we can send a post to a comments endpoints
+        This test confirms that we can send a post to a comments endpoint
         :param get_auth_token:
         :return:
         """
@@ -39,6 +39,30 @@ class TestCommentsEndpoint:
             f"Unexpected Status Code. Expected: 201. Actual:{response.status_code}"
         assert response.json()['comment_text'] == random_string, \
             f"Unexpected Value. Expected: {random_string}. Actual:{response.json()['comment_text']}"
+
+    @pytest.mark.tcid04
+    def test_update_comments(self, get_auth_token):
+        """
+        This test confirms that we can send a PUT request to the comments endpoint
+        :param get_auth_token:
+        :return:
+        """
+        logger.info("Running tcid04 'test_update_comments'")
+        # Get a list of comment ID's and pick a random one
+        random_id = comments.get_random_comment_id(access_token=get_auth_token)
+        logger.debug(f"Updating comment with the ID of '{random_id}'")
+
+        # Update comment with a random sentence
+        random_sentence = generate_random_sentence()
+        likes = generate_random_number()
+        updated_comment = comments.update_comment(access_token=get_auth_token, comment_id=random_id,
+                                                  comment_text=random_sentence, likes=likes)
+        assert updated_comment.json()['id'] == random_id, \
+            f"Unexpected value. Comment ID Expected: {random_id}. Actual {updated_comment.json()['id']}"
+        assert updated_comment.json()['comment_text'] == random_sentence, \
+            f"Unexpected value. Comment Text Expected: {random_sentence}. Actual {updated_comment.json()['comment_text']}"
+        assert updated_comment.json()['likes'] == likes, \
+            f"Unexpected value. Comment Text Expected: {likes}. Actual {updated_comment.json()['likes']}"
 
     @pytest.mark.tcid00
     def test_cud_comment(self, get_auth_token):
