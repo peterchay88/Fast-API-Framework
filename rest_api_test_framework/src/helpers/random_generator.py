@@ -4,12 +4,22 @@ import random
 random_sentence = RandomSentence()
 
 
-def generate_random_sentence():
+def generate_random_sentence(char_length=0):
     """
     This function generates a simple random sentence
     :return:
     """
-    sentence = random_sentence.bare_bone_sentence()
+    if char_length > 0:
+        sentence = random_sentence.bare_bone_sentence()
+        while True:
+            if len(sentence) < char_length:
+                extra_words = random_sentence.bare_bone_sentence()
+                sentence = f"{sentence} {extra_words}"
+                continue
+            elif len(sentence) >= char_length:
+                break
+    elif char_length == 0:
+        sentence = random_sentence.bare_bone_sentence()
     return sentence
 
 
