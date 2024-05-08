@@ -18,6 +18,13 @@ Make
 User admin/admin is preloaded in the DB. Leverage this user to authenticate and perform admin-only operations 
 (i.e. create/delete/list-all users, delete comments)
 
+## Environment Setup
+This framework is intended to be run in a docker environment. Please create a file named `secrets.env` and copy the
+contents in example.env. You will need to fill out the `ADMIN_USERNAME` & `ADMIN_PASSWORD` variables. \
+\
+Once this is done there is logic in the docker YAML file to pull this in and include it ints env once the container and
+image are spun up.
+
 ## How to run tests
 ### Docker
 First you will need to spin up the docker image. 
@@ -30,7 +37,9 @@ an argument after calling the script. Specify all if you wish to run all the tes
 bash docker_test_runner.sh <argument>
 ```
 If you need to run tests with more than one marker use the "and/or" operator
-For example `bash docker_test_runner.sh "tcid01 and tcid34"`
+For example `bash docker_test_runner.sh "tcid01 and tcid34"` 
+
+For debugging purposes you also have the option to log into the container and run the tests local to the container.
 
 ### Local
 If you wish to run tests on the local env you will need to edit the value in `secrets.env` for the key `API_URL` 
@@ -45,4 +54,3 @@ bash local_test_runner.sh <argument>
 1. Write more test.
 2. re-vist if Docker YAML file is the best way to do this. After running the docker script that uses the yaml file
 its a bit annoying that you have to use another terminal.
-3. Need to add info on how I used secrets.env in the docker file 
