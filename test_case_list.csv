@@ -4,5 +4,6 @@ Test Case ID,Description
 03,Create a comment
 04,Update a comment
 05,Delete a comment
-00,"Create a new comment, update the comment, and the delete the comment"
+06,"Create a new comment, update the comment, and the delete the comment"
+07,Confirm that you are not able to create a comment over 140 characters.
 

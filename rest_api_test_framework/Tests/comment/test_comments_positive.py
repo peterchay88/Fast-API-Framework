@@ -81,7 +81,7 @@ class TestCommentsEndpointPositive:
         assert response.json()['detail'] == f"Deleted comment {comment_id}", \
             f"Unexpected response. Expected {'Deleted comment {comment_id}'}. Actual {response.json()['detail'] }"
 
-    @pytest.mark.tcid00
+    @pytest.mark.tcid06
     def test_cud_comment(self, get_auth_token):
         """
         This test checks the ability to create a new comment, update it, and delete it
