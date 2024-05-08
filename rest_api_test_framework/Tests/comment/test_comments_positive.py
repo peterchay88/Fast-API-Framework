@@ -9,7 +9,7 @@ api_request_call = RequestsApiCall()
 comments = Comments()
 
 
-class TestCommentsEndpoint:
+class TestCommentsEndpointPositive:
 
     @pytest.mark.tcid02
     def test_get_comments(self, get_auth_token):
