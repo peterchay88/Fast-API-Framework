@@ -64,6 +64,23 @@ class TestCommentsEndpoint:
         assert updated_comment.json()['likes'] == likes, \
             f"Unexpected value. Comment Text Expected: {likes}. Actual {updated_comment.json()['likes']}"
 
+    @pytest.mark.tcid05
+    def test_delete_comment(self, get_auth_token):
+        """
+        This test confirms that we can send a DELETE request to the comments endpoint
+        :param get_auth_token:
+        :return:
+        """
+        logger.info("Running tcid05 'test_delete_comments'")
+        # Generate a list of comments ID then randomly pick one to be deleted
+        comment_id = comments.get_random_comment_id(access_token=get_auth_token)
+        # Delete the comment
+        logger.debug(f"Attempting to delete comment {comment_id}")
+        response = comments.delete_comment(access_token=get_auth_token, comment_id=comment_id)
+        logger.debug(f"Deleted comment {comment_id}")
+        assert response.json()['detail'] == f"Deleted comment {comment_id}", \
+            f"Unexpected response. Expected {'Deleted comment {comment_id}'}. Actual {response.json()['detail'] }"
+
     @pytest.mark.tcid00
     def test_cud_comment(self, get_auth_token):
         """

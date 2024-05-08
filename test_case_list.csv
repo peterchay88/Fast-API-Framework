@@ -1,4 +1,8 @@
 Test Case ID,Description
-1,Hit the Health check endpoint
-2,Get all comments
-3,"Create a new comment, update the comment, and the delete the comment"
+01,Hit the Health check endpoint
+02,Get all comments
+03,Create a comment
+04,Update a comment
+05,Delete a comment
+00,"Create a new comment, update the comment, and the delete the comment"
+
