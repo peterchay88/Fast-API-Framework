@@ -25,12 +25,16 @@ class Comments:
         random_id = random.choice(id_list)
         return random_id
 
-    def create_comment(self, access_token, string):
+    def create_comment(self, access_token, string, **kwargs):
         request_headers = build_request_headers(access_token)
         encoded_string = url_encode_string(string)
         response = self.api_request.post(endpoint=f"{self.endpoint}{self.text_header}{encoded_string}",
                                          api_headers=request_headers)
-        self.api_request.expected_status_code(status_code=response.status_code, expected_status_code=201)
+        if "expected_status_code" in kwargs:
+            self.api_request.expected_status_code(status_code=response.status_code,
+                                                  expected_status_code=kwargs["expected_status_code"])
+        else:
+            self.api_request.expected_status_code(status_code=response.status_code, expected_status_code=201)
         return response
 
     def update_comment(self, access_token, comment_id, **kwargs):
@@ -47,7 +51,11 @@ class Comments:
         logger.debug(f"updating the comment with ID : {comment_id} with the following payload: {payload}")
         response = self.api_request.put(endpoint=f"{self.endpoint}/{comment_id}", api_json=payload,
                                         api_headers=request_headers)
-        self.api_request.expected_status_code(status_code=response.status_code)
+        if "expected_status_code" in kwargs:
+            self.api_request.expected_status_code(status_code=response.status_code,
+                                                  expected_status_code=kwargs["expected_status_code"])
+        else:
+            self.api_request.expected_status_code(status_code=response.status_code)
         return response
 
     def delete_comment(self, access_token, comment_id):

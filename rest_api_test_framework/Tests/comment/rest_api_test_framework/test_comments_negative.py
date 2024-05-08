@@ -21,4 +21,8 @@ class TestCommentsEndpointNegative:
         logger.info("Running tcid07 'test_create_comments_over_max_char_limit'")
         # Generate a Random sentence with 141 or More characters. 140 is the limit.
         random_sentence = generate_random_sentence(char_length=141)
-        import pdb; pdb.set_trace()
+        logger.debug(f"Attempting to create comment with {len(random_sentence)} characters")
+        response = comments.create_comment(access_token=get_auth_token, string=random_sentence,
+                                           expected_status_code=500)
+        assert response.status_code == 500, \
+            f"Unexpected Status code. Expected 500. Actual {response.status_code}"
