@@ -8,6 +8,8 @@ pytestmark = [pytest.mark.comments]
 api_request_call = RequestsApiCall()
 comments = Comments()
 
+pytestmark = [pytest.mark.comments]
+
 
 class TestCommentsEndpointPositive:
 
