@@ -1,4 +1,5 @@
-from wonderwords import RandomSentence
+import wonderwords
+from wonderwords import RandomSentence, random_word
 import random
 
 random_sentence = RandomSentence()
@@ -21,6 +22,15 @@ def generate_random_sentence(char_length=0):
     elif char_length == 0:
         sentence = random_sentence.bare_bone_sentence()
     return sentence
+
+
+def generate_random_word():
+    """
+    This function generates a random word
+    :return:
+    """
+    word = wonderwords.RandomWord()
+    return word.word()
 
 
 def generate_random_number(minimum=0, maximum=100):

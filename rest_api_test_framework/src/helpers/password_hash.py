@@ -1,4 +1,5 @@
 import bcrypt
+from rest_api_test_framework.src.utilities.logging_utility import logger
 
 
 class EncryptPassword:
@@ -12,7 +13,7 @@ class EncryptPassword:
         :param password:
         :return:
         """
-        encrypted_password = bcrypt.hashpw(password=self.password, salt=bcrypt.gensalt())
+        encrypted_password = bcrypt.hashpw(password=self.password.encode(), salt=bcrypt.gensalt())
         return encrypted_password
 
     def check_password_hash(self, hashed_password):
@@ -22,8 +23,10 @@ class EncryptPassword:
         :param hashed_password:
         :return:
         """
-        if bcrypt.checkpw(password=self.password, hashed_password=hashed_password):
+        if bcrypt.checkpw(password=self.password.encode(), hashed_password=hashed_password):
             result = 200
         else:
             result = 400
+            logger.debug(hashed_password)
         return result
+

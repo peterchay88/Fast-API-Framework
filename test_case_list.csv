@@ -8,4 +8,5 @@ Test Case ID,Description
 07,Confirm that you are not able to create a comment over 140 characters.
 08,Confirm that you are not able to update a comment to a string that's over 140 characters
 09,Get all users
+10,Create a user with the user permission level
 
