@@ -25,10 +25,12 @@ class TestUsersPositive:
         logger.debug(f"retrieved all users: {response.json()}")
         assert response.ok, f"Unexpected response. {response.status_code} "
 
-    @pytest.mark.tcid10
-    def test_create_user(self, get_auth_token):
+    @pytest.mark.parametrize("role",
+                             [pytest.param("user", marks=pytest.mark.tcid10),
+                              pytest.param("admin", marks=pytest.mark.tcid11)])
+    def test_create_user(self, get_auth_token, role):
         """
-        This test confirms that we can hit the users endpoint and create a user with the user role
+        This test confirms that we can hit the users endpoint and create a user with the user role or admin role
         :param get_auth_token:
         :return:
         """
@@ -44,11 +46,19 @@ class TestUsersPositive:
         logger.debug(f"Encrypted Password: {encrypted_pw}")
 
         # Create User
-        data = {
-            "username": username,
-            "password_hash": str(encrypted_pw),
-            "roles": "user"
-        }
+        if role == "user":
+            data = {
+                "username": username,
+                "password_hash": str(encrypted_pw),
+                "roles": "user"
+            }
+        elif role == "admin":
+            data = {
+                "username": username,
+                "password_hash": str(encrypted_pw),
+                "roles": "admin"
+            }
+
         logger.debug(f"Sending payload: {data}")
         created_user = user.create_user(access_token=get_auth_token, data=json.dumps(data))
 
@@ -57,4 +67,3 @@ class TestUsersPositive:
 
         check_pw = hash_pw.check_password_hash(hashed_password=encrypted_pw)
         assert check_pw == 200, f"Unexpected value for password. Expected 200. Actual {check_pw} "
-

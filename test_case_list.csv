@@ -9,4 +9,5 @@ Test Case ID,Description
 08,Confirm that you are not able to update a comment to a string that's over 140 characters
 09,Get all users
 10,Create a user with the user permission level
+11,Create a user with the admin permission level
 
