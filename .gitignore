@@ -1,12 +1,11 @@
 /API/
 /build/
-/dist/
 rest_api_test_framework.egg-info/
 secrets.env
 /venv/
 **/__pycache__/
 *.pyc
-.idea
+.idea/
 .DS_store
 *.html
 **/.pytest_cache/
@@ -14,3 +13,4 @@ secrets.env
 /API/basic-restapi-app/db.sqlite3-shm
 /API/basic-restapi-app/db.sqlite3-wal
 internal_readme.md
+/dist/
