@@ -14,3 +14,4 @@ secrets.env
 /API/basic-restapi-app/db.sqlite3-shm
 /API/basic-restapi-app/db.sqlite3-wal
 internal_readme.md
+/shell_scripts
